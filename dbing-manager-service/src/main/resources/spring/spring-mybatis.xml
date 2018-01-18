@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--SqlSessionFactory 整合数据源、mybatis全局配置文件、扫描mapper映射文件、配置别名、-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--配置数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置mybatis全局配置文件-->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <!--扫描mapper映射文件-->
+        <property name="mapperLocations" value="classpath:mybatis/mappers/*.xml"/>
+        <!--扫描pojo,配置别名-->
+        <property name="typeAliasesPackage" value="com.dbing.manager.pojo"/>
+    </bean>
+
+    <!--扫描Dao代理接口对象 MapperScannerConfigurer-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.dbing.mappers"/>
+    </bean>
+
+</beans>

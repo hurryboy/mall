@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dbing-manager</artifactId>
+        <groupId>com.dbing</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../dbing-manager/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dbing-manager-pojo</artifactId>
+    <dependencies>
+        <!-- 通用Mapper -->
+        <dependency>
+            <groupId>com.github.abel533</groupId>
+            <artifactId>mapper</artifactId>
+        </dependency>
+    </dependencies>
+
+
+</project>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dbing.mappers.CategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.dbing.manager.pojo.Category" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="show_in_nav" property="showInNav" jdbcType="INTEGER" />
+    <result column="is_show" property="isShow" jdbcType="INTEGER" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="filter_attr" property="filterAttr" jdbcType="VARCHAR" />
+    <result column="is_top_style" property="isTopStyle" jdbcType="INTEGER" />
+    <result column="top_style_tpl" property="topStyleTpl" jdbcType="VARCHAR" />
+    <result column="style_icon" property="styleIcon" jdbcType="VARCHAR" />
+    <result column="cat_icon" property="catIcon" jdbcType="VARCHAR" />
+    <result column="is_top_show" property="isTopShow" jdbcType="INTEGER" />
+    <result column="cat_alias_name" property="catAliasName" jdbcType="VARCHAR" />
+    <result column="commission_rate" property="commissionRate" jdbcType="SMALLINT" />
+    <result column="touch_icon" property="touchIcon" jdbcType="VARCHAR" />
+    <result column="category_links" property="categoryLinks" jdbcType="LONGVARCHAR" />
+    <result column="category_topic" property="categoryTopic" jdbcType="LONGVARCHAR" />
+  </resultMap>
+</mapper>
