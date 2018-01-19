@@ -3,6 +3,7 @@ package com.dbing.manager.pojo;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Table(name = "productdesc")
 public class ProductDesc implements Serializable {
     /**
      * 商品ID

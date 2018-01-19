@@ -3,6 +3,7 @@ package com.dbing.manager.pojo;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Table(name = "contentCategory")
 public class Contentcategory implements Serializable {
     /**
      * 类目ID

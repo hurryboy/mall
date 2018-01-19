@@ -1,5 +1,6 @@
 package com.dbing.manager.interfaceimpl;
 
+import com.dbing.common.utils.ReflectionUtils;
 import com.dbing.manager.services.BaseService;
 import com.github.abel533.entity.Example;
 import com.github.abel533.mapper.Mapper;
@@ -25,9 +26,10 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
     public BaseServiceImpl() {
         //通过反射获取
-        Type type = this.getClass().getGenericSuperclass();
+       /* Type type = this.getClass().getGenericSuperclass();
         ParameterizedType pty = (ParameterizedType)type;
-        clazz = (Class<T>) pty.getActualTypeArguments()[0];
+        clazz = (Class<T>) pty.getActualTypeArguments()[0];*/
+       clazz = ReflectionUtils.getSuperGenericType(this.getClass());
     }
 
     @Override

@@ -8,6 +8,7 @@ public class Product implements Serializable {
      * 商品id，同时也是商品编号
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**

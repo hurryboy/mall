@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
     <!--配置事务管理器-->
     <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
@@ -27,9 +30,7 @@
     </tx:advice>
     <!-- 切面 -->
     <aop:config>
-        <aop:advisor advice-ref="txAdvice"
-                     pointcut="execution(* com.dbing.manager.service.*.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.dbing.manager.services.*.*(..))" />
     </aop:config>
-
 
 </beans>

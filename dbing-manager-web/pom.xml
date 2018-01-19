@@ -70,10 +70,31 @@
             <artifactId>jsp-api</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!--Springmvc支持 json转换-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
+
+        <!--JSON相关-->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+        </dependency>
+
+        <!--文件上传-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+        <!-- 百度编辑器 -->
+        <dependency>
+            <groupId>com.baidu</groupId>
+            <artifactId>ueditor</artifactId>
+            <version>${uediter.version}</version>
+        </dependency>
+
 
     </dependencies>
 

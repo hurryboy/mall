@@ -5,7 +5,6 @@
 <link rel="stylesheet"
 	href="/lib/zTree/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
 </head>
-<body>
 <body class="pos-r">
 	<div class="pos-a"
 		style="width: 200px; left: 0; top: 0; bottom: 0; height: 100%; border-right: 1px solid #e5e5e5; background-color: #f5f5f5; overflow: auto;">

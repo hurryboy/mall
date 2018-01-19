@@ -25,7 +25,6 @@ public class CategoryController {
     @ResponseBody
     public ResponseEntity<List<Category>> getCategorys(){
         List<Category> list = categoryService.getAll();
-        System.out.println(list);
         try {
             return ResponseEntity.status(HttpStatus.OK).body(list);
         } catch (Exception e) {

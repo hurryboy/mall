@@ -14,6 +14,7 @@
     <!--4.暴露服务-->
     <dubbo:service interface="com.dbing.manager.services.TestInterface" ref="testInterfaceImpl"/>
     <dubbo:service interface="com.dbing.manager.services.CategoryService" ref="categoryServiceImpl"/>
+    <dubbo:service interface="com.dbing.manager.services.ProductService" ref="productServiceImpl"/>
 
 
 </beans>
