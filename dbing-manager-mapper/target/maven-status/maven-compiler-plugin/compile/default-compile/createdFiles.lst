@@ -1,0 +1,6 @@
+com\dbing\mappers\ContentcategoryMapper.class
+com\dbing\mappers\ContentMapper.class
+com\dbing\mappers\UserMapper.class
+com\dbing\mappers\ProductMapper.class
+com\dbing\mappers\CategoryMapper.class
+com\dbing\mappers\ProductdescMapper.class

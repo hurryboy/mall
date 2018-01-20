@@ -1,0 +1,8 @@
+com\dbing\manager\services\BaseService.class
+com\dbing\manager\services\CategoryService.class
+com\dbing\manager\services\ContentService.class
+com\dbing\manager\services\ProductDescService.class
+com\dbing\manager\services\ContentCategoryService.class
+com\dbing\manager\services\TestInterface.class
+com\dbing\manager\services\ProductService.class
+com\dbing\manager\services\UserService.class
