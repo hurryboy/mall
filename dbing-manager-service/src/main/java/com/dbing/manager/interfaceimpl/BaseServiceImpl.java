@@ -33,7 +33,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
     }
 
     @Override
-    public T getById(Integer id) {
+    public T getById(long id) {
         return mapper.selectByPrimaryKey(id);
     }
 

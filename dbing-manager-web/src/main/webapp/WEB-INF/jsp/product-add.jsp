@@ -859,7 +859,17 @@ function article_save_submit(){
     
 })( jQuery );
 $(function(){
+    //富文本编辑器
 	var ue = UE.getEditor('editor');
+
+    UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+    UE.Editor.prototype.getActionUrl = function(action) {
+        if (action == '/restful/file/upload') {
+            return 'http://127.0.0.1:8081/restful/file/upload';
+        } else {
+            return this._bkGetActionUrl.call(this, action);
+        }
+    }
 });
 </script>
 </body>

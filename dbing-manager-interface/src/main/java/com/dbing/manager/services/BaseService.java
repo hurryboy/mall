@@ -7,7 +7,7 @@ import java.util.List;
 public interface BaseService<T> {
 
     //根据id查纪录
-    public T getById(Integer id);
+    public T getById(long id);
 
     //查询一条记录
     public T getOne(T t);

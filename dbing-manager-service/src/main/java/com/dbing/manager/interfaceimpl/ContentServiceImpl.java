@@ -5,5 +5,5 @@ import com.dbing.manager.services.ContentService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ContentServiceimpl extends BaseServiceImpl<Content> implements ContentService {
+public class ContentServiceImpl extends BaseServiceImpl<Content> implements ContentService {
 }

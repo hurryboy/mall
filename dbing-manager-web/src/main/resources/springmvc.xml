@@ -33,6 +33,9 @@
     <!-- dubbo调用服务 -->
     <dubbo:reference interface="com.dbing.manager.services.CategoryService" id="categoryService" timeout="1000000"></dubbo:reference>
     <dubbo:reference interface="com.dbing.manager.services.ProductService" id="productService" timeout="1000000"></dubbo:reference>
+    <dubbo:reference interface="com.dbing.manager.services.RedisService" id="redisService" timeout="1000000"></dubbo:reference>
+    <dubbo:reference interface="com.dbing.manager.services.ContentCategoryService" id="contentCategoryService" timeout="1000000"></dubbo:reference>
+    <dubbo:reference interface="com.dbing.manager.services.ContentService" id="ContentService" timeout="1000000"></dubbo:reference>
 
 
 

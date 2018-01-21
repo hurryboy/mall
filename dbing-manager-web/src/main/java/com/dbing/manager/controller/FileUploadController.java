@@ -18,8 +18,8 @@ import java.util.Map;
 @Controller
 public class FileUploadController {
 
-    @Value("${fdfs_address}")
-    private String baseFdfsUrl;
+   /* @Value("${fdfs_address}")*/
+   /* private String baseFdfsUrl;*/
 
 
     //文件上传
@@ -33,16 +33,16 @@ public class FileUploadController {
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> uploadFile(MultipartFile file) {
-        System.out.println("访问文件服务器地址");
         String orignalName = file.getOriginalFilename();
         HashMap<String, Object> map = new HashMap<>();
         String orignal = StringUtils.substringAfterLast(orignalName, ".");
-
+        String baseFdfsUrl = "";
         try {
             map.put("state", "SUCCESS"); //文件上传状态
             map.put("original", orignal);  //文件拓展名
             map.put("size", file.getSize()); //文件大小
             map.put("type", file.getContentType());  //文件类型
+            map.put("title",orignalName);
 
 
             byte[] bytes = file.getBytes();

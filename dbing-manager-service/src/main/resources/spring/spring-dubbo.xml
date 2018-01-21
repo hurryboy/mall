@@ -15,6 +15,9 @@
     <dubbo:service interface="com.dbing.manager.services.TestInterface" ref="testInterfaceImpl"/>
     <dubbo:service interface="com.dbing.manager.services.CategoryService" ref="categoryServiceImpl"/>
     <dubbo:service interface="com.dbing.manager.services.ProductService" ref="productServiceImpl"/>
+    <dubbo:service interface="com.dbing.manager.services.RedisService" ref="redisServiceImpl"/>
+    <dubbo:service interface="com.dbing.manager.services.ContentCategoryService" ref="contentCategoryServiceImpl"/>
+    <dubbo:service interface="com.dbing.manager.services.ContentService" ref="contentServiceImpl"/>
 
 
 </beans>
