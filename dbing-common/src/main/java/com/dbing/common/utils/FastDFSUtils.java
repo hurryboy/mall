@@ -16,7 +16,6 @@ public class FastDFSUtils {
             String trackerPath = "/properties/tracker.properties";
             URL url = FastDFSUtils.class.getResource(trackerPath);
             String absolutePath = url.getPath();
-            System.out.print("111111"+absolutePath);
 
             //2.使用tracker.conf配置文件对FastDFS客户端进行初始化
             ClientGlobal.init(absolutePath);
