@@ -25,7 +25,10 @@ public class ContentCategoryServiceImpl extends BaseServiceImpl<Contentcategory>
         long id = contentcategory.getId();
         List<Contentcategory> list = getByParentId(id);
         if(list!=null&&list.size()!=0){
-            deleteAll(list.get(0));
+            //遍历所有的子类目
+            for(Contentcategory cc:list){
+                deleteAll(cc);
+            }
         }
         deleteById(id);
     }
