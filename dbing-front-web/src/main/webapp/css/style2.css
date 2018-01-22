@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+.jdm-toolbar .jdm-toolbar-footer .jdm-tbar-tab-survey .tab-ico {
+	display: none;
+	_display: none;
+}
+.jdm-toolbar .jdm-toolbar-footer .jdm-tbar-tab-survey .tab-text {
+	left: 0px;
+	width: 35px;
+	height: 30px;
+	padding: 2px 0 3px;
+	line-height: 15px;
+	background: #c81623;
+	_display: block;
+}

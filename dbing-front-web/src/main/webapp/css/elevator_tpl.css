@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+.lift {
+	display: none;
+	position: fixed;
+	z-index: 100;
+	-moz-box-shadow: 0 0 4px rgba(0,0,0,.2);
+	box-shadow: 0 0 4px rgba(0,0,0,.2);
+	background-color: #918888
+}
+.lift_item {
+	border-top: 1px solid #b1aaaa;
+	-webkit-transition: background-color .1s;
+	-moz-transition: background-color .1s;
+	transition: background-color .1s
+}
+.lift_item_first {
+	border-top: none
+}
+.lift_btn {
+*cursor:pointer;
+	overflow: hidden;
+	display: block;
+	width: 24px;
+	padding: 10px 5px;
+	line-height: 14px;
+	text-align: center;
+	color: #fefefe;
+	-webkit-transition: color .1s;
+	-moz-transition: color .1s;
+	transition: color .1s
+}
+.lift_item:hover, .lift_item_on {
+	position: relative;
+	border-bottom: 1px solid #d70b1c;
+	margin-bottom: -1px;
+	border-color: #d70b1c;
+	background-color: #d70b1c
+}
+.lift_item:hover .lift_btn, .lift_item_on .lift_btn {
+	color: #fff
+}
+.lift_item_top, .lift_item_top:hover {
+	border-top: 1px solid #f6f6f6;
+	background-color: #5e4a4a;
+	border-bottom: 0;
+	margin-bottom: 0
+}
+.lift_item_top .lift_btn {
+	color: #fff
+}
+.lift_btn_arrow {
+	display: block;
+	width: 0;
+	height: 0;
+	margin: auto;
+	border-style: solid;
+	border-width: 4px;
+	border-color: #5e4a4a #5e4a4a #fff
+}
+.o2_mini .lift {
+	display: none
+}

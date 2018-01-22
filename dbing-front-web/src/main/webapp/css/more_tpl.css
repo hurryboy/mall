@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+.more_list {
+margin-left:-10px
+}
+.more_item {
+	float: left;
+	margin: 0 0 10px 10px
+}
+.more_item_lk {
+*cursor:pointer;
+	display: block;
+	padding: 4px;
+	width: 220px;
+	height: 305px;
+	border: 1px solid #fff;
+	background-color: #fff;
+	text-align: center;
+	overflow: hidden
+}
+.more_item_lk:hover {
+	border-color: #f10214
+}
+.more_photo {
+	display: inline-block;
+	width: auto;
+	height: 220px;
+	background-color: #f7f7f7
+}
+.more_info {
+	padding: 10px;
+	text-align: left
+}
+.more_info_name {
+	overflow: hidden;
+	margin-bottom: 5px;
+	height: 36px
+}
+.more_info_price {
+	font-size: 12px
+}
+.more_info_presale {
+	color: #f60;
+	margin-right: 5px
+}
+.o2_mini .more_item_lk {
+	width: 180px;
+	height: 260px
+}
+.o2_mini .more_photo {
+	height: 180px
+}
+

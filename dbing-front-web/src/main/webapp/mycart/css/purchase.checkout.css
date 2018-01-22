@@ -1,0 +1,71 @@
+img::selection {background:transparent;}
+img::-moz-selection {background:transparent;}
+img {-ms-interpolation-mode:bicubic;}
+.hide{display:none;}
+input {margin:0; padding:0;}
+table {border-collapse:collapse; border-spacing:0;}
+
+.group:after {height:0; content:"."; display:block; visibility:hidden; clear:both; font-size:0; line-height:0;}
+.group {zoom:1;}
+* html .group {height:1%;}
+*:first-child+html .group {min-height:1px;}
+
+.loading ,.checkout-state{background: #fff}
+.loading b ,.checkout-state b{width:28px; height:28px; float:left; background:url(../images/loading.gif) no-repeat center center;}
+.loading-1 ,.checkout-state{height:28px; border:1px solid #edd28b; padding:0 10px; float:left; line-height:28px;}
+.loading-1 b ,.checkout-state b {margin-right:5px;}
+
+.m2 {margin-bottom:20px;}
+.header {padding:20px 0 10px;}
+#logo {padding-left:5px; float:left;}
+.language {line-height:20px; text-align:right;}
+.language a, .language a:visited, .language a:hover {color:#005ea7;}
+.progress {padding-top:6px;}
+.progress .progress-2{background:url(../images/step2.png) no-repeat;width:481px;padding-top:23px;overflow:hidden;height:23px;}
+.progress ul {width:481px; float:right;}
+.progress li {width:160px; height:23px; float:left; color:#bce8a3; line-height:23px; text-align:center;}
+.progress li b {width:22px; height:25px; display:none; }
+.progress li.s2{color:#7abd54;width:161px;}
+.progress li.s3{color:#aaaaaa;}
+.progress li.complete b {background-position:0 -50px;}
+
+
+#checkout {width:988px; border:1px solid #ddd; }
+#checkout .mt {height:28px; background-color:#f7f7f7;padding-top:7px;}
+#checkout .mt h2 {height:35px; overflow:hidden; line-height:100px; background:url(../images/checkout-title.gif) no-repeat 10px 0;}
+
+#checkout .form-tip {color:#999;}
+#invoiceConsignee #checkout .form-tip{height: 26px;padding-left: 20px;float: left;line-height: 26px;}
+/*#invoiceConsignee #checkout select{width: 120px}*/
+
+#checkout .btn-submit {height:30px; margin-right:10px; padding-left:20px; float:left; line-height:30px; font-size:14px; font-weight:700; background:url(../../images/btn-save2013.png) no-repeat 0 0;}
+#checkout .btn-submit span {height:30px; padding-right:20px; float:left; cursor:pointer; background:url(../../images/btn-save2013.png) no-repeat 100% -30px;}
+#checkout a.btn-submit, #checkout a.btn-submit:visited, #checkout a.btn-submit:hover {color:#fff; text-decoration:none;}
+
+#checkout .btn-submit:hover {height:30px; margin-right:10px; padding-left:20px; float:left; line-height:30px; font-size:14px; font-weight:700; background:url(../../images/btn-hovercom.jpg) no-repeat 0 0;}
+#checkout .btn-submit:hover span {height:30px; padding-right:20px; float:left; cursor:pointer; background:url(../../images/btn-hovercom.jpg) no-repeat 100% -30px;}
+
+
+.checkout-steps {}
+.checkout-steps .step {border-top:1px solid #ddd;}
+
+.checkout-steps .step-current {width:984px; margin:-1px; border:3px solid #f60; position:relative;}
+.checkout-steps .step-title {height:45px; padding:0 20px; line-height:45px;position:relative;}
+.checkout-steps .step-title strong {color:#999; font-size:14px;}
+.checkout-steps .step-current .step-title strong, .checkout-steps .step-complete .step-title strong {color:#000;}
+.checkout-steps .step-action {padding-left:10px; color:#005ea7; font-size:12px; font-weight:400;}
+.checkout-steps .step-action a, .checkout-steps .step-action a:visited, .checkout-steps .step-action a:hover {color:#005ea7;}
+
+/*新增提示--按省份促销*/
+.checkout-submit-tip{background-color: rgb(255, 253, 238); border: 1px solid rgb(237, 210, 139); color: rgb(255, 102, 0); float: right; padding: 0pt 3px; height: 30px; line-height: 30px; margin: 10px 10px 0 0;} 
+
+.sbox-wrap {padding:0 42px;}
+.sbox {width:900px; overflow:hidden;}
+#checkout .sbox {padding:0px 0 20px;}
+#checkout .step-complete .sbox-wrap {padding:0 44px;}
+#checkout .s-content p {line-height:22px;}
+
+#consignee {}
+/* #consignee .content {padding-bottom:15px;}
+#consignee .s-content p {line-height:22px;}
+#consignee .form {padd

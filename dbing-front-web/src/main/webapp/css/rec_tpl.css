@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+.rec_list {
+	overflow: hidden;
+	height: 100px
+}
+.rec_item {
+	overflow: hidden;
+	float: left;
+	width: 396px;
+	height: 100%
+}
+.rec_lk {
+	display: block;
+	height: 100%
+}
+.rec_img {
+	display: block;
+	margin: auto
+}
+.o2_mini .rec_item {
+	width: 330px
+}
+.csstransitions .rec_img {
+	-webkit-transition: opacity .2s;
+	-moz-transition: opacity .2s;
+	transition: opacity .2s
+}
+.csstransitions .rec_lk:hover .rec_img {
+	opacity: .8
+}

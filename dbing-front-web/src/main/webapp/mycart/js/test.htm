@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/mycart/js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$.ajax({
+		type:"GET",
+		url:"http://manage.atguigu.com/js/testjsonp.jsp",
+		dataType:"jsonp",
+		success:function(msg){
+			alert(msg.abc);
+		}
+	});
+});
+</script>
+<script type="text/javascript" src="http://manage.atguigu.com/js/data.json"></script>
+</head>
+<body>
+
+
+</body>
+</html>
