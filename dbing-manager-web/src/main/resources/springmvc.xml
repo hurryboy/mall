@@ -7,7 +7,7 @@
 
 
     <!--加载外部资源文件-->
-    <context:property-placeholder location="classpath:/properties/fdfs_domain.properties"/>
+    <context:property-placeholder location="classpath:/properties/*.properties"/>
 
     <!--配置试图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

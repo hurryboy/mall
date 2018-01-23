@@ -5,6 +5,8 @@ import com.dbing.common.pojo.DataTableJSONResponse;
 import com.dbing.manager.pojo.Content;
 import com.dbing.manager.services.ContentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,6 +29,22 @@ public class ContentController {
     ContentService contentService;
 
 
+    /**
+     * 新增内容
+     * @param content
+     * @return
+     */
+    @RequestMapping(value = "content",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<Boolean> addContent(Content content){
+        try {
+            contentService.saveSelective(content);
+            return ResponseEntity.status(HttpStatus.CREATED).body(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
+    }
 
         /*
         * [
@@ -40,9 +59,15 @@ public class ContentController {
 
         * */
 
+    /**
+     *显示内容列表
+     * @param aodata
+     * @param categoryid
+     * @return
+     */
     @RequestMapping(value = "content",method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<DataTableJSONResponse> getAllContent(String aodata,String categoryid){
+    public ResponseEntity<DataTableJSONResponse> getAllContent(String aodata,Long categoryid){
         try {
             //1.默认的DataTables插件基本参数值
             Integer sEcho = 0; //访问的记录数
@@ -69,8 +94,10 @@ public class ContentController {
             }
 
             //4.获取所有的记录，手动分页
-            List<Content> list = contentService.getAll();
-            int count = contentService.getCount(null);
+            Content content = new Content();
+            content.setCategoryid(categoryid);
+            List<Content> list = contentService.getByCondition(content);
+            int count = contentService.getCount(content);
 
             if(count>iDisplayLength){
                 if((count-iDisplayStart)>iDisplayLength){
@@ -93,4 +120,23 @@ public class ContentController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
     }
 
+    @RequestMapping(value = "content",method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResponseEntity<Boolean> deleteByIds(String ids){
+        try {
+            String[] idsArr = StringUtils.split(ids,",");
+            List<Object> idsList = new ArrayList<>();
+            for (String str:idsArr){
+                idsList.add(str);
+            }
+
+            contentService.deleteBatch(idsList);
+
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(false);
+
+    }
 }

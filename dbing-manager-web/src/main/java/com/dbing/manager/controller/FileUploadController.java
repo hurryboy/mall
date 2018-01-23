@@ -18,8 +18,8 @@ import java.util.Map;
 @Controller
 public class FileUploadController {
 
-   /* @Value("${fdfs_address}")*/
-   /* private String baseFdfsUrl;*/
+   @Value("${fdfs_address}")
+   private String baseFdfsUrl;
 
 
     //文件上传
@@ -35,8 +35,8 @@ public class FileUploadController {
     public Map<String, Object> uploadFile(MultipartFile file) {
         String orignalName = file.getOriginalFilename();
         HashMap<String, Object> map = new HashMap<>();
+        String url = baseFdfsUrl;
         String orignal = StringUtils.substringAfterLast(orignalName, ".");
-        String baseFdfsUrl = "";
         try {
             map.put("state", "SUCCESS"); //文件上传状态
             map.put("original", orignal);  //文件拓展名
@@ -49,11 +49,11 @@ public class FileUploadController {
             String[] strr = FastDFSUtils.doUpload(bytes, orignalName);
 
             for (String str : strr) {
-                baseFdfsUrl = baseFdfsUrl + "/" + str;
+                url = url + "/" + str;
             }
 
-            map.put("url", baseFdfsUrl); //访问文件服务器地址
-            System.out.println("访问文件服务器地址"+baseFdfsUrl);
+            map.put("url", url); //访问文件服务器地址
+            System.out.println("访问文件服务器地址"+url);
 
 
         } catch (Exception e) {
