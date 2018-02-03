@@ -513,7 +513,7 @@ return {
 	},
 
 	/**
-	 * Add an event listener
+	 * Add an event session
 	 */
 	addEvent: function (el, type, fn) {
 		augment(el).bind(type, fn);

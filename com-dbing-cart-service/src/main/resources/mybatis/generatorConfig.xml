@@ -1,0 +1,46 @@
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="atguiguTables" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+
+        <!-- 关键作用是生成实体类中的各种注解 -->
+        <plugin type="com.github.abel533.generator.MapperPlugin">
+            <!-- 这里配置的是XxxMapper接口继承的Mapper接口 -->
+            <property name="mappers" value="com.github.abel533.mapper.Mapper"/>
+        </plugin>
+
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/mall"
+                userId="root"
+                password="admin">
+        </jdbcConnection>
+
+        <!-- targetProject:生成Entity类的路径 -->
+        <javaModelGenerator
+                targetProject="../dbing-manager-pojo/src/main/java"
+                targetPackage="com.dbing.manager.pojo">
+        </javaModelGenerator>
+
+        <!-- targetProject:XxxMapper.xml映射文件生成的路径 -->
+        <sqlMapGenerator
+                targetProject="./src/main/resources"
+                targetPackage="mybatis.mappers">
+        </sqlMapGenerator>
+
+        <!-- targetPackage：Mapper接口生成的位置 -->
+        <javaClientGenerator
+                type="XMLMAPPER"
+                targetProject="../com-dbing-cart-service/src/main/java"
+                targetPackage="com.dbing.cart.mapper">
+        </javaClientGenerator>
+
+        <!-- 数据库表名字和我们的entity类对应的映射指定 -->
+        <!-- “%”表示所有表都进行映射 -->
+        <table tableName="cart"/>
+
+    </context>
+</generatorConfiguration>

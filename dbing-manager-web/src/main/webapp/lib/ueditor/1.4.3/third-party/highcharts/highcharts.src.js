@@ -1300,7 +1300,7 @@ pathAnim = {
 		},
 	
 		/**
-		 * Add an event listener
+		 * Add an event session
 		 * @param {Object} el A HTML element or custom object
 		 * @param {String} event The event type
 		 * @param {Function} fn The event handler
@@ -2430,7 +2430,7 @@ SVGElement.prototype = {
 	},
 
 	/**
-	 * Add an event listener
+	 * Add an event session
 	 * @param {String} eventType
 	 * @param {Function} handler
 	 */
@@ -4970,7 +4970,7 @@ Highcharts.VMLElement = VMLElement = {
 	},
 
 	/**
-	 * Add an event listener. VML override for normalizing event parameters.
+	 * Add an event session. VML override for normalizing event parameters.
 	 * @param {String} eventType
 	 * @param {Function} handler
 	 */
@@ -15857,7 +15857,7 @@ var ColumnSeries = extendClass(Series, {
 	},
 
 	/**
-	 * Add tracking event listener to the series group, so the point graphics
+	 * Add tracking event session to the series group, so the point graphics
 	 * themselves act as trackers
 	 */
 	drawTracker: function () {
@@ -16124,7 +16124,7 @@ var PiePoint = extendClass(Point, {
 			name: pick(point.name, 'Slice')
 		});
 
-		// add event listener for select
+		// add event session for select
 		toggleSlice = function (e) {
 			point.slice(e.type === 'select');
 		};

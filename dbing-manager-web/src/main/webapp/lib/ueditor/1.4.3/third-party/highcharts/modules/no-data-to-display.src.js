@@ -118,7 +118,7 @@
 	}
 
 	/**
-	 * Add event listener to handle automatic display of no-data message
+	 * Add event session to handle automatic display of no-data message
 	 */
 	chartPrototype.callbacks.push(function (chart) {
 		H.addEvent(chart, 'load', handleNoData);

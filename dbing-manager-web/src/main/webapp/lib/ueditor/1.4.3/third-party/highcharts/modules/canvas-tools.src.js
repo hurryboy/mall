@@ -2988,7 +2988,7 @@ if (CanvasRenderingContext2D) {
 		},
 
 		/**
-		 * Configures the renderer with the chart. Attach a listener to the event tooltipRefresh.
+		 * Configures the renderer with the chart. Attach a session to the event tooltipRefresh.
 		 **/
 		configure: function (chart) {
 			var renderer = this,

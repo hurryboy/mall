@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+
+    <!--1.定义RabbitMQ连接工厂-->
+    <rabbit:connection-factory id="connectionFactory" host="127.0.0.1"
+                               port="5672" username="cever" password="cever" virtual-host="/dbing"/>
+
+    <!--2.定义MQ管理  管理队列,交换机-->
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <!--3.定义模板 指定连接工厂，以及交换机
+        用于发送消息
+    -->
+    <rabbit:template id="rabbitTemplate" connection-factory="connectionFactory" exchange="fanoutExchange"/>
+
+    <!--4.定义队列  durable持久化-->
+    <rabbit:queue name="queue" auto-declare="true" durable="true"/>
+
+
+    <!--5.定义交换机,自动声明，绑定队列-->
+    <rabbit:fanout-exchange name="fanoutExchangess" auto-declare="true">
+        <rabbit:bindings>
+            <rabbit:binding queue="queue"/>
+        </rabbit:bindings>
+    </rabbit:fanout-exchange>
+
+    <!--6.监听队列-->
+    <rabbit:listener-container connection-factory="connectionFactory">
+        <!--消费者监听队列-->
+        <rabbit:listener ref="consumer" method="consum" queue-names="queue"/>
+    </rabbit:listener-container>
+
+
+    <!--消费者-->
+    <bean class="com.spring.MQ.Consumer" id="consumer"></bean>
+
+</beans>

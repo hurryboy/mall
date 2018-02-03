@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--1.Jedis连接池配置-->
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <!--设置最大连接数-->
+        <property name="maxTotal" value="30"/>
+        <property name="maxIdle" value="5" />
+        <property name="maxWaitMillis" value="2000" />
+        <property name="testOnBorrow" value="false" />
+    </bean>
+
+    <!--2.redis集群信息集合-->
+    <bean id="JedisShardInfo_1" class="redis.clients.jedis.JedisShardInfo">
+        <constructor-arg name="host" value="${redis.host1}"/>
+        <constructor-arg name="port" value="${redis.port1}"/>
+        <property name="password" value="${redis.password}"/>
+    </bean>
+    <bean id="JedisShardInfo_2" class="redis.clients.jedis.JedisShardInfo">
+        <constructor-arg name="host" value="${redis.host2}"/>
+        <constructor-arg name="port"  value="${redis.port2}"/>
+        <property name="password" value="${redis.password}"/>
+    </bean>
+
+    <!--3.Redis集群连接池-->
+    <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
+        <constructor-arg index="0" ref="poolConfig"/>
+        <constructor-arg index="1">
+            <!--redis集群信息集合-->
+            <list>
+                <ref bean="JedisShardInfo_1"/>
+                <ref bean="JedisShardInfo_2"/>
+            </list>
+        </constructor-arg>
+
+    </bean>
+
+</beans>

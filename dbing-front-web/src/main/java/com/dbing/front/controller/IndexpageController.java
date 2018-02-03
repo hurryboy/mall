@@ -25,7 +25,7 @@ public class IndexpageController {
     private String smallAdUrl;
 
 
-    @RequestMapping(value = "index.html",method = RequestMethod.GET)
+    @RequestMapping(value = "index",method = RequestMethod.GET)
     public ModelAndView toIndexPage(){
         System.out.println(bigAdUrl);
 

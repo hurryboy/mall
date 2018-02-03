@@ -217,7 +217,7 @@ win.HighchartsAdapter = {
 	},
 
 	/**
-	 * Add an event listener
+	 * Add an event session
 	 * @param {Object} el HTML element or custom object
 	 * @param {String} type Event type
 	 * @param {Function} fn Event handler

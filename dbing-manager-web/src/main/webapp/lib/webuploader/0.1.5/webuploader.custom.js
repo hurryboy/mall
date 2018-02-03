@@ -252,7 +252,7 @@
     
         function Deferred( func ) {
             var tuples = [
-                    // action, add listener, listener list, final state
+                    // action, add session, session list, final state
                     [ 'resolve', 'done', Callbacks( true ), 'resolved' ],
                     [ 'reject', 'fail', Callbacks( true ), 'rejected' ],
                     [ 'notify', 'progress', Callbacks() ]

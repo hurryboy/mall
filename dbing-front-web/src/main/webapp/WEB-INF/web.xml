@@ -15,6 +15,11 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+
+  <!--前台Session监听器-->
+  <listener>
+    <listener-class>com.dbing.front.session.LocalSessionListener</listener-class>
+  </listener>
   
   <!--配置Springmvc-->
   <!--前端控制器-->
@@ -33,6 +38,10 @@
     <!--是作为一种伪静态技术，seo优化，提高在搜索引擎中的排名-->
     <servlet-name>dispatcherServlet</servlet-name>
     <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <url-pattern>/service/*</url-pattern>
   </servlet-mapping>
 
 

@@ -253,13 +253,13 @@ vjs.CoreObject.create = function(){
  */
 
 /**
- * Add an event listener to element
+ * Add an event session to element
  * It stores the handler function in a separate cache object
  * and adds a generic handler to the element's event,
  * along with a unique id (guid) to the element.
  * @param  {Element|Object}   elem Element or object to bind listeners to
  * @param  {String}   type Type of event to bind to.
- * @param  {Function} fn   Event listener.
+ * @param  {Function} fn   Event session.
  * @private
  */
 vjs.on = function(elem, type, fn){
@@ -311,8 +311,8 @@ vjs.on = function(elem, type, fn){
 /**
  * Removes event listeners from an element
  * @param  {Element|Object}   elem Object to remove listeners from
- * @param  {String=}   type Type of listener to remove. Don't include to remove all events from element.
- * @param  {Function} fn   Specific listener to remove. Don't incldue to remove listeners for an event type.
+ * @param  {String=}   type Type of session to remove. Don't include to remove all events from element.
+ * @param  {Function} fn   Specific session to remove. Don't incldue to remove listeners for an event type.
  * @private
  */
 vjs.off = function(elem, type, fn) {
@@ -341,7 +341,7 @@ vjs.off = function(elem, type, fn) {
   // If no handlers exist, nothing to unbind
   if (!handlers) return;
 
-  // If no listener was provided, remove all listeners for type
+  // If no session was provided, remove all listeners for type
   if (!fn) {
     removeType(type);
     return;
@@ -360,7 +360,7 @@ vjs.off = function(elem, type, fn) {
 };
 
 /**
- * Clean up the listener cache and dispatchers
+ * Clean up the session cache and dispatchers
  * @param  {Element|Object} elem Element to clean up
  * @param  {String} type Type of event to clean up
  * @private
@@ -575,7 +575,7 @@ vjs.trigger = function(elem, event) {
 };
 
 /**
- * Trigger a listener only once for an event
+ * Trigger a session only once for an event
  * @param  {Element|Object}   elem Element or object to
  * @param  {String}   type
  * @param  {Function} fn
@@ -771,9 +771,9 @@ vjs.bind = function(context, fn, uid) {
 
   // Allow for the ability to individualize this function
   // Needed in the case where multiple objects might share the same prototype
-  // IF both items add an event listener with the same function, then you try to remove just one
+  // IF both items add an event session with the same function, then you try to remove just one
   // it will remove both because they both have the same guid.
-  // when using this, you need to use the bind method when you remove the listener as well.
+  // when using this, you need to use the bind method when you remove the session as well.
   // currently used in text tracks
   ret.guid = (uid) ? uid + '_' + fn.guid : fn.guid;
 
@@ -1769,7 +1769,7 @@ vjs.Component.prototype.buildCSSClass = function(){
 ============================================================================= */
 
 /**
- * Add an event listener to this component's element
+ * Add an event session to this component's element
  *
  *     var myFunc = function(){
  *       var myPlayer = this;
@@ -1781,7 +1781,7 @@ vjs.Component.prototype.buildCSSClass = function(){
  * The context will be the component.
  *
  * @param  {String}   type The event type e.g. 'click'
- * @param  {Function} fn   The event listener
+ * @param  {Function} fn   The event session
  * @return {vjs.Component} self
  */
 vjs.Component.prototype.on = function(type, fn){
@@ -1790,12 +1790,12 @@ vjs.Component.prototype.on = function(type, fn){
 };
 
 /**
- * Remove an event listener from the component's element
+ * Remove an event session from the component's element
  *
  *     myComponent.off("eventName", myFunc);
  *
  * @param  {String=}   type Event type. Without type it will remove all listeners.
- * @param  {Function=} fn   Event listener. Without fn it will remove all listeners for a type.
+ * @param  {Function=} fn   Event session. Without fn it will remove all listeners for a type.
  * @return {vjs.Component}
  */
 vjs.Component.prototype.off = function(type, fn){
@@ -1804,10 +1804,10 @@ vjs.Component.prototype.off = function(type, fn){
 };
 
 /**
- * Add an event listener to be triggered only once and then removed
+ * Add an event session to be triggered only once and then removed
  *
  * @param  {String}   type Event type
- * @param  {Function} fn   Event listener
+ * @param  {Function} fn   Event session
  * @return {vjs.Component}
  */
 vjs.Component.prototype.one = function(type, fn) {
@@ -1821,7 +1821,7 @@ vjs.Component.prototype.one = function(type, fn) {
  *     myComponent.trigger('eventName');
  *
  * @param  {String}       type  The event type to trigger, e.g. 'click'
- * @param  {Event|Object} event The event object to be passed to the listener
+ * @param  {Event|Object} event The event object to be passed to the session
  * @return {vjs.Component}      self
  */
 vjs.Component.prototype.trigger = function(type, event){
@@ -1861,12 +1861,12 @@ vjs.Component.prototype.isReadyOnInitFinish_ = true;
 vjs.Component.prototype.readyQueue_;
 
 /**
- * Bind a listener to the component's ready state
+ * Bind a session to the component's ready state
  *
  * Different from event listeners in that if the ready event has already happend
  * it will trigger the function immediately.
  *
- * @param  {Function} fn Ready listener
+ * @param  {Function} fn Ready session
  * @return {vjs.Component}
  */
 vjs.Component.prototype.ready = function(fn){
@@ -2902,7 +2902,7 @@ vjs.Player.prototype.createEl = function(){
 
   // Make box use width/height of tag, or rely on default implementation
   // Enforce with CSS since width/height attrs don't work on divs
-  this.width(this.options_['width'], true); // (true) Skip resize listener on load
+  this.width(this.options_['width'], true); // (true) Skip resize session on load
   this.height(this.options_['height'], true);
 
   // Wrap video tag in div (el/box) container
@@ -3506,7 +3506,7 @@ vjs.Player.prototype.requestFullScreen = function(){
     vjs.on(document, requestFullScreen.eventName, vjs.bind(this, function(e){
       this.isFullScreen = document[requestFullScreen.isFullScreen];
 
-      // If cancelling fullscreen, remove event listener.
+      // If cancelling fullscreen, remove event session.
       if (this.isFullScreen === false) {
         vjs.off(document, requestFullScreen.eventName, arguments.callee);
       }
@@ -3561,7 +3561,7 @@ vjs.Player.prototype.enterFullWindow = function(){
   // Storing original doc overflow value to return to when fullscreen is off
   this.docOrigOverflow = document.documentElement.style.overflow;
 
-  // Add listener for esc key to exit fullscreen
+  // Add session for esc key to exit fullscreen
   vjs.on(document, 'keydown', vjs.bind(this, this.fullWindowOnEscKey));
 
   // Hide any scroll bars
@@ -4981,8 +4981,8 @@ vjs.MediaTechController.prototype.addControlsListeners = function(){
   // Turn on component tap events
   this.emitTapEvents();
 
-  // The tap listener needs to come after the touchend listener because the tap
-  // listener cancels out any reportedUserActivity when setting userActive(false)
+  // The tap session needs to come after the touchend session because the tap
+  // session cancels out any reportedUserActivity when setting userActive(false)
   this.on('tap', this.onTap);
 };
 
@@ -5551,7 +5551,7 @@ vjs.Flash = vjs.MediaTechController.extend({
           vjs.Flash.checkReady(tech);
         });
 
-        // Create event listener for all swf events
+        // Create event session for all swf events
         iWin['events'] = vjs.bind(this.player_, function(swfID, eventName){
           var player = this;
           if (player && player.techName === 'flash') {
@@ -5559,7 +5559,7 @@ vjs.Flash = vjs.MediaTechController.extend({
           }
         });
 
-        // Create error listener for all swf errors
+        // Create error session for all swf errors
         iWin['errors'] = vjs.bind(this.player_, function(swfID, eventName){
           vjs.log('Flash Error', eventName);
         });
@@ -6320,7 +6320,7 @@ vjs.TextTrack.prototype.activate = function(){
   // Only activate if not already active.
   if (this.mode_ === 0) {
     // Update current cue on timeupdate
-    // Using unique ID for bind function so other tracks don't remove listener
+    // Using unique ID for bind function so other tracks don't remove session
     this.player_.on('timeupdate', vjs.bind(this, this.update, this.id_));
 
     // Reset cue time on media end
@@ -6337,7 +6337,7 @@ vjs.TextTrack.prototype.activate = function(){
  * Turn off cue tracking.
  */
 vjs.TextTrack.prototype.deactivate = function(){
-  // Using unique ID for bind function so other tracks don't remove listener
+  // Using unique ID for bind function so other tracks don't remove session
   this.player_.off('timeupdate', vjs.bind(this, this.update, this.id_));
   this.player_.off('ended', vjs.bind(this, this.reset, this.id_));
   this.reset(); // Reset

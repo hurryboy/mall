@@ -38,5 +38,4 @@
     <dubbo:reference interface="com.dbing.manager.services.ContentService" id="ContentService" timeout="1000000"></dubbo:reference>
 
 
-
 </beans>

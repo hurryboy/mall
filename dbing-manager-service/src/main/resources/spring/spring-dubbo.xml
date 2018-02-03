@@ -9,7 +9,7 @@
     <!--2.指定注册中心地址-->
     <dubbo:registry protocol="zookeeper" address="192.168.233.101:2181"/>
     <!--3.指定Dubbo服务对象的获取-->
-    <dubbo:protocol name="dubbo" port="20880"/>
+    <dubbo:protocol name="dubbo" port="20884"/>
     
     <!--4.暴露服务-->
     <dubbo:service interface="com.dbing.manager.services.TestInterface" ref="testInterfaceImpl"/>
