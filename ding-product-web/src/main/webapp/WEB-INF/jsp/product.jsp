@@ -34,9 +34,10 @@
 				HM:'0'
 			}
 		};
-		
+
 		function submitItem(){
 			var num = $("#buy-num").val();
+			alert(num);
     		window.location.href= "http://www.dbing.front/cart/${product.id}/"+num+".html";
     	}
 	</script>

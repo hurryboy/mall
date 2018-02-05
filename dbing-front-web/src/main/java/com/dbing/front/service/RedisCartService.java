@@ -70,8 +70,9 @@ public class RedisCartService {
 
             if(temp!=null){
                 cart.setNum(cart.getNum()+num);
+            }else {
+                cart.setNum(1);
             }
-            cart.setNum(1);
         }
 
         //在Redis中以Hashes类型存储，Cartkey代表整个购物车，商品Id代表购物车中每一项

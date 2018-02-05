@@ -3,6 +3,8 @@ package com.dbing.cart.service.impl;
 import com.dbing.cart.interfaces.CartService;
 import com.dbing.cart.mapper.CartMapper;
 import com.dbing.manager.pojo.Cart;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.abel533.entity.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,18 +24,7 @@ public class CartServiceImpl implements CartService {
         cart.setCreated(new Date());
         cart.setUpdated(new Date());
 
-        Cart param = new Cart();
-        param.setProductId(cart.getProductId());
-        param.setUserId(cart.getUserId());
-        Cart temp = cartMapper.selectOne(param);
-
-        if(temp!=null){
-            cart = temp;
-            cart.setNum(cart.getNum()+1);
-            row = cartMapper.updateByPrimaryKeySelective(cart);
-        }else{
-            row = cartMapper.insertSelective(cart);
-        }
+        row = cartMapper.insertSelective(cart);
 
 
         return row>0?true:false;
@@ -56,10 +47,15 @@ public class CartServiceImpl implements CartService {
         cart.setProductId(productId);
         cart.setUserId(userId);
 
-        cart = cartMapper.selectOne(cart);
-        cart.setNum(num);
+        int row = 0;
+        if((cartMapper.selectOne(cart))!=null){
+            cart = cartMapper.selectOne(cart);
+            cart.setNum(num);
+            row = cartMapper.updateByPrimaryKeySelective(cart);
+        }else {
+            addProductToCart(cart);
+        }
 
-        int row = cartMapper.updateByPrimaryKeySelective(cart);
 
         return row>0?true:false;
     }
@@ -71,9 +67,48 @@ public class CartServiceImpl implements CartService {
         cart.setProductId(productId);
         cart.setUserId(userId);
 
-        cart = cartMapper.selectOne(cart);
+        Cart cart1 = cartMapper.selectOne(cart);
+        List<Cart> list = cartMapper.select(cart);
 
-        int row = cartMapper.delete(cart);
+        int row = cartMapper.delete(cart1);
+        /*if(list!=null&&list.size()>0){
+            row = cartMapper.delete(list.get(0));
+        }*/
+
+        return row>0?true:false;
+    }
+
+    @Override
+    public void mergeCart(String carts) throws Exception {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        JavaType javaType = objectMapper.getTypeFactory().constructCollectionType(List.class,Cart.class);
+        List<Cart> cartList = objectMapper.readValue(carts,javaType);
+
+        for (Cart cart:cartList){
+            //updateCart(Long userId, Long productId, Integer num)
+            if(cart!=null){
+                updateCart(cart);
+            }
+
+        }
+    }
+
+    public Boolean updateCart(Cart cart1) {
+        int row = 0;
+        Integer num = cart1.getNum();
+        cart1.setNum(null);
+        Cart temp = cartMapper.selectOne(cart1);
+        if(temp!=null){
+            Cart cart = cartMapper.selectOne(cart1);
+            cart.setNum(cart.getNum()+num);
+            row = cartMapper.updateByPrimaryKeySelective(cart);
+        }else {
+            cart1.setNum(num);
+            addProductToCart(cart1);
+        }
+
 
         return row>0?true:false;
     }

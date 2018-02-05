@@ -16,6 +16,15 @@
    <title>我的购物车 - 尚商商城</title>
    <script>
    	var pageConfig  = {};
+   	
+   	//绑定结算按钮点击事件
+       $(function () {
+           $("#checkout").click(function () {
+               ${cartList}
+           })
+       })
+   	
+   	
    </script>
 <body> 
 <!--shortcut start-->
@@ -113,7 +122,7 @@
           <div class="cart-total-2014">
               <div class="cart-button">
                   <span class="check-comm-btns" id="checkout-jd">
-                      <a class="checkout" href="/order/create.html" clstag="clickcart|keycount|xincart|gotoOrderInfo" id="toSettlement">去结算<b></b></a>                  </span>
+                      <a class="checkout" id="checkout" href="#" clstag="clickcart|keycount|xincart|gotoOrderInfo" id="toSettlement">去结算<b></b></a>                  </span>
                   <span class="combine-btns" style="display:none">
                         <span class="fore1" style="display: none;">
                           <a href="" class="combine-btn">不支持合并付款</a>                      </span>

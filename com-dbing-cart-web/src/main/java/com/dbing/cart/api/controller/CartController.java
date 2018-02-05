@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -86,6 +83,13 @@ public class CartController {
 
 
     //http://cart.atguigu.com/restful/cart/{userId}/{productId}
+
+    /**
+     * 删除指定购物车
+     * @param userId
+     * @param productId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "{userId}/{productId}",method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteCart(@PathVariable("userId")Long userId,
@@ -99,6 +103,25 @@ public class CartController {
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 
+    }
+
+    /**
+     * 合并缓存和数据库中的购物车
+     * @param carts
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "merge",method = RequestMethod.POST)
+   // public ResponseEntity<Void> mergeCart(@RequestParam(value = "carts",required = false) List<Cart> carts){
+    public ResponseEntity<Void> mergeCart(@RequestParam("carts") String carts){
+
+        try {
+            cartService.mergeCart(carts);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
 

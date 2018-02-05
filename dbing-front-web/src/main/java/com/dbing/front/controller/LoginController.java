@@ -4,6 +4,8 @@ import com.dbing.common.pojo.HttpResult;
 import com.dbing.common.pojo.TokenInfo;
 import com.dbing.front.Cookies.CookieUtils;
 import com.dbing.front.httpClient.HttpClientUtils;
+import com.dbing.front.service.CartService;
+import com.dbing.front.service.RedisServiceImpl;
 import com.dbing.front.session.MySessionContext;
 import com.dbing.manager.pojo.User;
 import com.fasterxml.jackson.databind.JavaType;
@@ -21,6 +23,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +32,9 @@ public class LoginController {
 
     @Autowired
     private HttpClientUtils httpClientUtils;
+
+    @Autowired
+    private CartService cartService;
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -73,6 +79,16 @@ public class LoginController {
             if(tokenResult.getContent()!=null){
                 //令牌有效，设置本地会话为“登陆状态”
                 session.setAttribute("isLogin","true");
+
+
+                //--------合并未登陆状态下，用户持久化在缓存中的购物车----------
+                try {
+                    String cartKey = CookieUtils.getCookieValue(request,"cart");
+                    cartService.MergeCart(cartKey,token);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
 
                 //---在子系统中设置Cookie保存令牌，以便购物车拿到用户信息，进行购物车的持久化
                 String d = CookieUtils.getDomainName(request);
@@ -167,6 +183,16 @@ public class LoginController {
             if(content!=null){
                 //设置局部会话登陆状态
                 session.setAttribute("isLogin","true");
+
+                //--------合并未登陆状态下，用户持久化在缓存中的购物车----------
+                try {
+                    String cartKey = CookieUtils.getCookieValue(request,"cart");
+                    cartService.MergeCart(cartKey,token);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
                 //保存令牌
                 CookieUtils.setCookie(request,response,"token",token);
                 //重定向到受保护资源

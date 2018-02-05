@@ -12,25 +12,48 @@
         <!--绑定数据源-->
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    <!-- 通知 -->
+
+    <!-- 事务策略 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <!-- 传播行为 -->
+
+            <!--定义查询方法只读-->
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="query*" propagation="SUPPORTS" read-only="true" />
+
+            <!--主库执行操作，事务传播行为定义默认行为-->
             <tx:method name="save*" propagation="REQUIRED" />
             <tx:method name="insert*" propagation="REQUIRED" />
             <tx:method name="add*" propagation="REQUIRED" />
             <tx:method name="create*" propagation="REQUIRED" />
             <tx:method name="delete*" propagation="REQUIRED" />
             <tx:method name="update*" propagation="REQUIRED" />
-            <tx:method name="find*" propagation="SUPPORTS" read-only="true" />
-            <tx:method name="select*" propagation="SUPPORTS" read-only="true" />
-            <tx:method name="get*" propagation="SUPPORTS" read-only="true" />
-            <tx:method name="query*" propagation="SUPPORTS" read-only="true" />
+
+            <!--其他方法默认策略-->
+            <tx:method name="*"/>
         </tx:attributes>
     </tx:advice>
     <!-- 切面 -->
+
+    <!--定义AOP切面处理器-->
+    <bean class="com.dbing.manager.datasource.DataSouceApsect" id="dataSourceApect"/>
+
+
     <aop:config>
-        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.dbing.manager.services.*.*(..))" />
+
+        <aop:pointcut id="txPointcut" expression="execution(* com.dbing.manager.services.*.*(..))" />
+        <!-- 应用事务策略到Service切面 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
+
+        <!--将切面应用到自定义的切面处理器上-->
+        <!--  -9999保证该切面最高优先级执行  -->
+        <!--<aop:aspect ref="dataSourceApect" order="-9999">
+            <aop:before method="before" pointcut-ref="txPointcut"/>
+        </aop:aspect>-->
+
     </aop:config>
 
 </beans>

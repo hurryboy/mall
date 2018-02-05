@@ -44,7 +44,7 @@
 		<input type="hidden" name="ordershipping.receiverAddress" value="尚硅谷办公楼1楼"/>
 	</form>
 	<div class="w w1 header clearfix">
-		<div id="logo"><a href="http://www.atguigu.com/"><img src="/mycart/images/reglogo.png"  alt="尚商商城" /></a></div>
+		<div id="logo"><a href="http://www.atguigu.com/"><img src="/mycart/image/reglogo.png"  alt="尚商商城" /></a></div>
 		<div class="progress clearfix">
 			<ul class="progress-2">
 				<li class="s1"><b></b>1.我的购物车</li>
@@ -201,7 +201,7 @@
 				  <tr>
 				    <td class="fore1">
 					   <div class="p-goods">
-						  <div class="p-img"><a href="http://product.atguigu.com/product/${product.id}.html" target='_blank'><img width="52" height="52" src="${product.images[0]}"></a></div>
+						  <div class="p-img"><a href="http://product.atguigu.com/product/${product.id}.html" target='_blank'><img width="52" height="52" src="${product.image}"></a></div>
 							 <div class="p-detail">
 								<div class="p-name">
 									<a href="http://product.atguigu.com/product/${product.id}.html" target='_blank'>

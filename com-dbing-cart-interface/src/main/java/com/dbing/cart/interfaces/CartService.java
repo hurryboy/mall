@@ -13,4 +13,6 @@ public interface CartService {
     public Boolean updateCart(Long userId, Long productId, Integer num);
 
     public Boolean deleteCart(Long userId, Long productId);
+
+    public void mergeCart(String carts) throws Exception;
 }
